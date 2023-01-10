@@ -1,0 +1,32 @@
+{{> head }}
+
+<div id="loginPage" class="w-full h-full flex items-center justify-center">
+  <div class="w-80 px-4 py-6 flex flex-col space-y-4 rounded overflow-hidden bg-slate-200 rounded-xl overflow-hidden">
+    <label class="flex flex-col">
+      <span>Username:</span>
+      <input v-model="username" type="text" placeholder="Username" class="formControl" />
+    </label>
+    <label class="flex flex-col">
+      <span>Password:</span>
+      <input v-model="password" type="password" placeholder="Password" class="formControl" />
+    </label>
+    <label class="flex flex-col">
+      <span>Repeat password:</span>
+      <input v-model="repeatPassword" type="password" placeholder="Repeat password" class="formControl" />
+    </label>
+
+    <label class="flex flex-col">
+      <span>User type:</span>
+      <select v-model="userType" class="formControl">
+        <option value="">Select option</option>
+        <option :value="1">Moderator</option>
+        <option :value="2">Publisher</option>
+      </select>
+    </label>
+
+    <button class="px-2 py-3 rounded-lg bg-teal-600 text-teal-50 font-medium" @click="saveUser">Create user</button>
+  </div>
+
+</div>
+
+{{> foot }}
