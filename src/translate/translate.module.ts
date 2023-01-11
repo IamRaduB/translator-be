@@ -4,6 +4,6 @@ import { TranslateController } from './translate.controller';
 
 @Module({
   providers: [StorageService],
-  controllers: [TranslateController]
+  controllers: [TranslateController],
 })
 export class TranslateModule {}

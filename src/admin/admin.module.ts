@@ -6,5 +6,4 @@ import { UserModule } from '../user/user.module';
   imports: [UserModule],
   controllers: [AdminController],
 })
-export class AdminModule {
-}
+export class AdminModule {}

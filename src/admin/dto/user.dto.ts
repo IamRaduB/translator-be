@@ -1,4 +1,4 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
 import { UserRoles } from '../../user/entities/role.entity';
 
 export class BaseUserDto {
@@ -13,5 +13,7 @@ export class BaseUserDto {
 }
 
 export class UserDto extends BaseUserDto {
+  @IsNotEmpty()
+  @IsEnum(UserRoles)
   role: UserRoles;
 }

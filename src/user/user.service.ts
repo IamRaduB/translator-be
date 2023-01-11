@@ -6,16 +6,18 @@ import {
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
-import { BaseUserDto, UserDto } from '../admin/dto/user.dto';
-import { RoleEntity, UserRoles } from './entities/role.entity';
+import { BaseUserDto } from '../admin/dto/user.dto';
+import { Role, UserRoles } from './entities/role.entity';
 
 @Injectable()
 export class UserService {
   log: Logger = new Logger('UserService');
+
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
-    @InjectRepository(User) private roleRepository: Repository<RoleEntity>,
+    @InjectRepository(Role) private roleRepository: Repository<Role>,
   ) {}
+
   findOneByUsername(username: string) {
     return this.userRepository.findOne({
       where: {
@@ -26,10 +28,8 @@ export class UserService {
   }
 
   async createUser(userData: BaseUserDto, role?: UserRoles) {
-    const dbRole = await this.roleRepository.findOne({
-      where: {
-        name: role ?? UserRoles.EDITOR,
-      },
+    const dbRole = await this.roleRepository.findOneBy({
+      name: role ?? UserRoles.EDITOR,
     });
 
     if (!dbRole) {
@@ -48,6 +48,6 @@ export class UserService {
 
     user.role = dbRole;
 
-    return this.userRepository.create(user);
+    return this.userRepository.save(user);
   }
 }

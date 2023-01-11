@@ -5,6 +5,8 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
 import { TranslateModule } from './translate/translate.module';
+import { User } from './user/entities/user.entity';
+import { Role } from './user/entities/role.entity';
 
 @Module({
   imports: [
@@ -15,7 +17,7 @@ import { TranslateModule } from './translate/translate.module';
       username: 'root',
       password: '123admin',
       database: 'translator',
-      entities: [],
+      entities: [User, Role],
       synchronize: true,
     }),
     AuthModule,

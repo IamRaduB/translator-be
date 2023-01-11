@@ -8,7 +8,7 @@ export enum UserRoles {
 }
 
 @Entity()
-export class RoleEntity {
+export class Role {
   @PrimaryGeneratedColumn()
   id: number;
 
