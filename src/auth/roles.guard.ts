@@ -1,0 +1,27 @@
+import { CanActivate, ExecutionContext } from '@nestjs/common';
+import { Observable } from 'rxjs';
+import { Reflector } from '@nestjs/core';
+import { ROLES_KEY } from './roles.decorator';
+import { UserRoles } from '../user/entities/role.entity';
+import { JwtUser } from './jwt.dto';
+
+export class RolesGuard implements CanActivate {
+  constructor(private reflector: Reflector) {}
+
+  canActivate(
+    context: ExecutionContext,
+  ): boolean | Promise<boolean> | Observable<boolean> {
+    const requiredRoles = this.reflector.getAllAndOverride<UserRoles[]>(
+      ROLES_KEY,
+      [context.getHandler(), context.getClass()],
+    );
+
+    if (!requiredRoles) {
+      return true;
+    }
+
+    const request = context.switchToHttp().getRequest();
+    const user: JwtUser = request.user;
+    return requiredRoles.some((role) => user.role === role);
+  }
+}

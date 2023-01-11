@@ -8,7 +8,7 @@ export enum UserRoles {
 }
 
 @Entity()
-export class Role {
+export class RoleEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -18,7 +18,7 @@ export class Role {
     enum: UserRoles,
     default: UserRoles.EDITOR,
   })
-  name: string;
+  name: UserRoles;
 
   @OneToMany(() => User, (user) => user.role)
   users: User[];

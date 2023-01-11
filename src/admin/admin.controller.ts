@@ -1,7 +1,7 @@
 import { Body, Controller, Post, UnauthorizedException } from '@nestjs/common';
 import { BaseUserDto, UserDto } from './dto/user.dto';
 import { UserService } from '../user/user.service';
-import { UserRoles } from '../user/entities/role';
+import { UserRoles } from '../user/entities/role.entity';
 
 @Controller('admin')
 export class AdminController {
