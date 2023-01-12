@@ -10,9 +10,15 @@ import { Role } from './user/entities/role.entity';
 import { Content } from './translate/entities/content.entity';
 import { Approval } from './translate/entities/approval.entity';
 import { Rejection } from './translate/entities/rejection.entity';
+import { ConfigModule } from '@nestjs/config';
+import constants from './constants';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [constants],
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'localhost',

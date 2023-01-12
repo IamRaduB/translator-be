@@ -10,6 +10,7 @@ export class StorageService {
   }
 
   async listBucket(bucketName: string, options?: GetFileOptions) {
+    this.log.log(`Loading contents from ${bucketName}`);
     const [files] = await this.storage.bucket(bucketName).getFiles(options);
     return files;
   }
