@@ -8,7 +8,7 @@ import {
 import { Role } from './role.entity';
 import { Approval } from '../../translate/entities/approval.entity';
 import { Rejection } from '../../translate/entities/rejection.entity';
-import { Content } from '../../translate/entities/content.entity';
+import { Translation } from '../../translate/entities/translation.entity';
 
 @Entity()
 export class User {
@@ -37,10 +37,10 @@ export class User {
   })
   role: Role;
 
-  @OneToMany(() => Content, (content) => content.editor, {
+  @OneToMany(() => Translation, (translation) => translation.editor, {
     cascade: ['insert', 'update'],
   })
-  changes: Content[];
+  changes: Translation[];
 
   @OneToMany(() => Approval, (approval) => approval.approver, {
     cascade: ['insert', 'update'],

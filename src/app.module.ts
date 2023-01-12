@@ -7,7 +7,7 @@ import { AdminModule } from './admin/admin.module';
 import { TranslateModule } from './translate/translate.module';
 import { User } from './user/entities/user.entity';
 import { Role } from './user/entities/role.entity';
-import { Content } from './translate/entities/content.entity';
+import { Translation } from './translate/entities/translation.entity';
 import { Approval } from './translate/entities/approval.entity';
 import { Rejection } from './translate/entities/rejection.entity';
 import { ConfigModule } from '@nestjs/config';
@@ -26,7 +26,7 @@ import constants from './constants';
       username: 'root',
       password: '123admin',
       database: 'translator',
-      entities: [User, Role, Content, Approval, Rejection],
+      entities: [User, Role, Translation, Approval, Rejection],
       synchronize: true,
     }),
     AuthModule,

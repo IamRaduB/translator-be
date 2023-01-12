@@ -21,9 +21,9 @@ export class StorageService {
   }
 
   async writeFile(bucketName: string, filePath: string, contents: any) {
-    const file = this.storage.bucket(bucketName).file(filePath)
+    const file = this.storage.bucket(bucketName).file(filePath);
     try {
-      await file.save(JSON.stringify(contents, null, 2))
+      await file.save(JSON.stringify(contents, null, 2));
     } catch (e) {
       console.log(e);
       return null;

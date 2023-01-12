@@ -5,31 +5,26 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
-  JoinColumn,
+  JoinColumn, PrimaryColumn,
 } from 'typeorm';
 import { User } from '../../user/entities/user.entity';
 import { Approval } from './approval.entity';
 import { Rejection } from './rejection.entity';
 
 @Entity()
-export class Content {
-  @PrimaryGeneratedColumn()
-  id: number;
+export class Translation {
+  @PrimaryColumn()
+  project: string;
+
+  @PrimaryColumn({
+    nullable: false,
+  })
+  language: string;
 
   @Column({
     type: 'json',
   })
-  content: string;
-
-  @Column({
-    nullable: false,
-  })
-  project: string;
-
-  @Column({
-    nullable: false,
-  })
-  language: string;
+  payload: string;
 
   @CreateDateColumn()
   createdAt: Date;
