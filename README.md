@@ -37,3 +37,4 @@ $ npm run start:dev
 1. Moderator users can approve/reject changes (ongoing)
 2. User management admin interface
 3. Integrate JSON utility features (i.e. sorting)
+4. Allow integration with multiple cloud providers
