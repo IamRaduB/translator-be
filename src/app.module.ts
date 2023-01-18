@@ -24,7 +24,7 @@ import constants from './constants';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123admin',
+      password: 'admin',
       database: 'translator',
       entities: [User, Role, Translation, Approval, Rejection],
       synchronize: true,
