@@ -47,11 +47,16 @@ export class TranslateController {
     @Body() content: string,
     @Request() req,
   ) {
-    await this.translateService.createTranslation(
-      req.user,
-      project,
-      lang,
-      content,
+    // await this.translateService.createTranslation(
+    //   req.user,
+    //   project,
+    //   lang,
+    //   content,
+    // );
+    await this.translateService.writeFileToStorage(
+        project,
+        lang,
+        content,
     );
   }
 
